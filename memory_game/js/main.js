@@ -10,9 +10,10 @@ var checkForMatch = function() {
 var flipCard = function (cardId) {
 	console.log ("User flipped " + cards[cardId]);
 	if (cardsInPlay.length === 2){
-		checkForMatch();
-}
+	} 
 };
+checkForMatch();
+
 flipCard(0);
 flipCard(2);
 cardsInPlay.push("cards[cardId]");
