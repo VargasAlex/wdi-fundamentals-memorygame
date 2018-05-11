@@ -38,20 +38,33 @@ var checkForMatch = function () {
 };
 
 //This function stores the steps when the user flips a card.
-var flipCard = function (cardId) {
-	console.log ("User flipped " + cards[cardId].rank);
+var flipCard = function () {
+	var cardId = this.getAttribute("data-id");
+	this.setAttribute("src", cards[cardId].cardImage);
+	this.setAttribute("class", "clicked");
+	console.log (this);
 	cardsInPlay.push(cards[cardId].rank);
 	if (cardsInPlay.length === 2){
 		checkForMatch();
 	} 
 };
 
-flipCard(0);
-console.log(cards[0].cardImage);
-console.log(cards[0].suit);
-flipCard(2);
-console.log(cards[2].cardImage);
-console.log(cards[2].suit);
+//This function creates a game board.
+var createBoard = function() {
+	for (var i = 0; i < cards.length; i++) {
+		var cardElement = document.createElement("img");
+		cardElement.setAttribute("src" , "images/back.png");
+		cardElement.setAttribute("data-id", i);
+		cardElement.addEventListener("click", flipCard);
+		var board = document.getElementById("game-board");
+		board.appendChild(cardElement);
+	}
+};
+
+createBoard();
+
+
+
 
 
 
